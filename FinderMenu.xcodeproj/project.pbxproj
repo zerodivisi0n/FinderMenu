@@ -12,6 +12,9 @@
 		0279D9381634723E0072A5BD /* FinderMenu.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0279D9371634723E0072A5BD /* FinderMenu.1 */; };
 		0279D94E163473520072A5BD /* mach_inject_bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D94A163472F80072A5BD /* mach_inject_bundle.framework */; };
 		0279D952163476890072A5BD /* mach_inject_bundle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0279D94A163472F80072A5BD /* mach_inject_bundle.framework */; };
+		0279D95C16347E670072A5BD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95B16347E670072A5BD /* Cocoa.framework */; };
+		0279D96616347E670072A5BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0279D96416347E670072A5BD /* InfoPlist.strings */; };
+		0279D96D163480450072A5BD /* FinderInj.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D96C163480450072A5BD /* FinderInj.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = mach_inject_bundle;
+		};
+		0279D96E163480800072A5BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0279D9231634723E0072A5BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0279D95916347E670072A5BD;
+			remoteInfo = FinderExt;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -61,6 +71,16 @@
 		0279D9361634723E0072A5BD /* FinderMenu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinderMenu-Prefix.pch"; sourceTree = "<group>"; };
 		0279D9371634723E0072A5BD /* FinderMenu.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = FinderMenu.1; sourceTree = "<group>"; };
 		0279D93E163472F70072A5BD /* mach_inject_bundle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mach_inject_bundle.xcodeproj; path = mach_inject/mach_inject_bundle/mach_inject_bundle.xcodeproj; sourceTree = "<group>"; };
+		0279D95A16347E670072A5BD /* FinderExt.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinderExt.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0279D95B16347E670072A5BD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0279D95E16347E670072A5BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0279D95F16347E670072A5BD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0279D96016347E670072A5BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0279D96316347E670072A5BD /* FinderExt-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FinderExt-Info.plist"; sourceTree = "<group>"; };
+		0279D96516347E670072A5BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0279D96716347E670072A5BD /* FinderExt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinderExt-Prefix.pch"; sourceTree = "<group>"; };
+		0279D96B163480450072A5BD /* FinderInj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderInj.h; sourceTree = "<group>"; };
+		0279D96C163480450072A5BD /* FinderInj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderInj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +93,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0279D95716347E670072A5BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0279D95C16347E670072A5BD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +109,7 @@
 			children = (
 				0279D93E163472F70072A5BD /* mach_inject_bundle.xcodeproj */,
 				0279D9321634723E0072A5BD /* FinderMenu */,
+				0279D96116347E670072A5BD /* FinderExt */,
 				0279D92F1634723E0072A5BD /* Frameworks */,
 				0279D92D1634723E0072A5BD /* Products */,
 			);
@@ -90,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				0279D92C1634723E0072A5BD /* FinderMenu */,
+				0279D95A16347E670072A5BD /* FinderExt.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				0279D9301634723E0072A5BD /* Foundation.framework */,
+				0279D95B16347E670072A5BD /* Cocoa.framework */,
+				0279D95D16347E670072A5BD /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +160,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0279D95D16347E670072A5BD /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0279D95E16347E670072A5BD /* AppKit.framework */,
+				0279D95F16347E670072A5BD /* CoreData.framework */,
+				0279D96016347E670072A5BD /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0279D96116347E670072A5BD /* FinderExt */ = {
+			isa = PBXGroup;
+			children = (
+				0279D96B163480450072A5BD /* FinderInj.h */,
+				0279D96C163480450072A5BD /* FinderInj.m */,
+				0279D96216347E670072A5BD /* Supporting Files */,
+			);
+			path = FinderExt;
+			sourceTree = "<group>";
+		};
+		0279D96216347E670072A5BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0279D96316347E670072A5BD /* FinderExt-Info.plist */,
+				0279D96416347E670072A5BD /* InfoPlist.strings */,
+				0279D96716347E670072A5BD /* FinderExt-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,12 +206,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				0279D96F163480800072A5BD /* PBXTargetDependency */,
 				0279D94D1634734E0072A5BD /* PBXTargetDependency */,
 			);
 			name = FinderMenu;
 			productName = FinderMenu;
 			productReference = 0279D92C1634723E0072A5BD /* FinderMenu */;
 			productType = "com.apple.product-type.tool";
+		};
+		0279D95916347E670072A5BD /* FinderExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0279D96816347E670072A5BD /* Build configuration list for PBXNativeTarget "FinderExt" */;
+			buildPhases = (
+				0279D95616347E670072A5BD /* Sources */,
+				0279D95716347E670072A5BD /* Frameworks */,
+				0279D95816347E670072A5BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinderExt;
+			productName = FinderExt;
+			productReference = 0279D95A16347E670072A5BD /* FinderExt.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -179,6 +259,7 @@
 			projectRoot = "";
 			targets = (
 				0279D92B1634723E0072A5BD /* FinderMenu */,
+				0279D95916347E670072A5BD /* FinderExt */,
 			);
 		};
 /* End PBXProject section */
@@ -192,6 +273,17 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0279D95816347E670072A5BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0279D96616347E670072A5BD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		0279D95516347D0E0072A5BD /* ShellScript */ = {
@@ -219,6 +311,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0279D95616347E670072A5BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0279D96D163480450072A5BD /* FinderInj.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -227,7 +327,23 @@
 			name = mach_inject_bundle;
 			targetProxy = 0279D94C1634734E0072A5BD /* PBXContainerItemProxy */;
 		};
+		0279D96F163480800072A5BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0279D95916347E670072A5BD /* FinderExt */;
+			targetProxy = 0279D96E163480800072A5BD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0279D96416347E670072A5BD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0279D96516347E670072A5BD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0279D9391634723E0072A5BD /* Debug */ = {
@@ -305,6 +421,36 @@
 			};
 			name = Release;
 		};
+		0279D96916347E670072A5BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
+				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0279D96A16347E670072A5BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
+				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -322,6 +468,14 @@
 			buildConfigurations = (
 				0279D93C1634723E0072A5BD /* Debug */,
 				0279D93D1634723E0072A5BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0279D96816347E670072A5BD /* Build configuration list for PBXNativeTarget "FinderExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0279D96916347E670072A5BD /* Debug */,
+				0279D96A16347E670072A5BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
