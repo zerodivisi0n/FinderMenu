@@ -1,13 +1,13 @@
 //
-//  FinderInj.m
+//  FinderInj.h
 //  FinderMenu
 //
 //  Created by Alexey Zhuchkov on 10/21/12.
 //  Copyright (c) 2012 InfiniteLabs. All rights reserved.
 //
 
-#import "FinderInj.h"
+#import <Foundation/Foundation.h>
 
-@implementation FinderInj
+@interface FinderExt : NSObject
 
 @end

@@ -31,7 +31,11 @@ int main(int argc, const char * argv[])
 
         mach_error_t err;
         err = mach_inject_bundle_pid([bundlePath fileSystemRepresentation], pid);
-        NSLog(@"Inject result: %d", err);
+        if (err == err_none) {
+            NSLog(@"Inject successful!");
+        } else {
+            NSLog(@"Inject error: %d", err);
+        }
     }
     return 0;
 }

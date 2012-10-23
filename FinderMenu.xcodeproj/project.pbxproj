@@ -12,10 +12,10 @@
 		0279D9381634723E0072A5BD /* FinderMenu.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0279D9371634723E0072A5BD /* FinderMenu.1 */; };
 		0279D94E163473520072A5BD /* mach_inject_bundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D94A163472F80072A5BD /* mach_inject_bundle.framework */; };
 		0279D952163476890072A5BD /* mach_inject_bundle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0279D94A163472F80072A5BD /* mach_inject_bundle.framework */; };
-		0279D95C16347E670072A5BD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95B16347E670072A5BD /* Cocoa.framework */; };
 		0279D96616347E670072A5BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0279D96416347E670072A5BD /* InfoPlist.strings */; };
-		0279D96D163480450072A5BD /* FinderInj.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D96C163480450072A5BD /* FinderInj.m */; };
+		0279D96D163480450072A5BD /* FinderExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D96C163480450072A5BD /* FinderExt.m */; };
 		0279D9701634882E0072A5BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95E16347E670072A5BD /* AppKit.framework */; };
+		0291CA3C1635FA1C001E5737 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95B16347E670072A5BD /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,8 @@
 		0279D96316347E670072A5BD /* FinderExt-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FinderExt-Info.plist"; sourceTree = "<group>"; };
 		0279D96516347E670072A5BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0279D96716347E670072A5BD /* FinderExt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinderExt-Prefix.pch"; sourceTree = "<group>"; };
-		0279D96B163480450072A5BD /* FinderInj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderInj.h; sourceTree = "<group>"; };
-		0279D96C163480450072A5BD /* FinderInj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderInj.m; sourceTree = "<group>"; };
+		0279D96B163480450072A5BD /* FinderExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderExt.h; sourceTree = "<group>"; };
+		0279D96C163480450072A5BD /* FinderExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderExt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0279D95C16347E670072A5BD /* Cocoa.framework in Frameworks */,
+				0291CA3C1635FA1C001E5737 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,8 +175,8 @@
 		0279D96116347E670072A5BD /* FinderExt */ = {
 			isa = PBXGroup;
 			children = (
-				0279D96B163480450072A5BD /* FinderInj.h */,
-				0279D96C163480450072A5BD /* FinderInj.m */,
+				0279D96B163480450072A5BD /* FinderExt.h */,
+				0279D96C163480450072A5BD /* FinderExt.m */,
 				0279D96216347E670072A5BD /* Supporting Files */,
 			);
 			path = FinderExt;
@@ -317,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0279D96D163480450072A5BD /* FinderInj.m in Sources */,
+				0279D96D163480450072A5BD /* FinderExt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,14 +426,11 @@
 		0279D96916347E670072A5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
 				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -441,14 +438,11 @@
 		0279D96A16347E670072A5BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
 				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
@@ -472,6 +466,7 @@
 				0279D93D1634723E0072A5BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0279D96816347E670072A5BD /* Build configuration list for PBXNativeTarget "FinderExt" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +475,7 @@
 				0279D96A16347E670072A5BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
