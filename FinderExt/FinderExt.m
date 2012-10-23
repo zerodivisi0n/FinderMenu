@@ -14,7 +14,7 @@
 
 typedef void (*BuildContextMenuProc)(Class, SEL, NSMenu *, unsigned int, id, unsigned long long, BOOL);
 
-BuildContextMenuProc gOrigContextMenuProc;
+static BuildContextMenuProc gOrigContextMenuProc;
 
 void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int context, id browserController, unsigned long long maxItems, BOOL addServices) {
     NSLog(@"In override method for menu: %@", menu);
