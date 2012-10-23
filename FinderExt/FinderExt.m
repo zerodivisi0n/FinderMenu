@@ -17,7 +17,7 @@ typedef void (*BuildContextMenuProc)(Class, SEL, NSMenu *, unsigned int, id, uns
 static BuildContextMenuProc gOrigContextMenuProc;
 
 void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int context, id browserController, unsigned long long maxItems, BOOL addServices) {
-    NSLog(@"In override method for menu: %@", menu);
+    NSLog(@"In override method");
     gOrigContextMenuProc(c, s, menu, context, browserController, maxItems, addServices);
     
     // Find first separator to insert menu after it
