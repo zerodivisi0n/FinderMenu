@@ -12,9 +12,28 @@
 
 #import "mach_override.h"
 
+// Auxiliary class to execute menu actions
+@interface MenuItemTarget : NSObject
+- (void)sayHello:(id)sender;
+- (void)sayGoodbye:(id)sender;
+@end
+
+@implementation MenuItemTarget
+- (void)sayMessage:(NSString *)message {
+    [[NSAlert alertWithMessageText:@"FinderExt"
+                    defaultButton:nil
+                  alternateButton:nil
+                      otherButton:nil
+        informativeTextWithFormat:@"Say %@", message] runModal];
+}
+- (void)sayHello:(id)sender { [self sayMessage:@"Hello"]; }
+- (void)sayGoodbye:(id)sender { [self sayMessage:@"Goodbye"]; }
+@end
+
 typedef void (*BuildContextMenuProc)(Class, SEL, NSMenu *, unsigned int, id, unsigned long long, BOOL);
 
 static BuildContextMenuProc gOrigContextMenuProc;
+static MenuItemTarget *gMenuItemTarget;
 
 void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int context, id browserController, unsigned long long maxItems, BOOL addServices) {
     NSLog(@"In override method");
@@ -34,8 +53,15 @@ void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int contex
     // Build extension menu
     NSMenuItem *myMenuItem = [[NSMenuItem alloc] initWithTitle:@"My Menu" action:nil keyEquivalent:@""];
     NSMenu *mySubmenu = [[NSMenu alloc] initWithTitle:@"My menu"];
-    [mySubmenu addItemWithTitle:@"Say Hello" action:nil keyEquivalent:@""];
-    [mySubmenu addItemWithTitle:@"Say Goodbye" action:nil keyEquivalent:@""];
+    [mySubmenu setAutoenablesItems:NO];
+    [[mySubmenu addItemWithTitle:@"Say Hello"
+                          action:@selector(sayHello:)
+                   keyEquivalent:@""]
+     setTarget:gMenuItemTarget];
+    [[mySubmenu addItemWithTitle:@"Say Goodbye"
+                          action:@selector(sayGoodbye:)
+                   keyEquivalent:@""]
+     setTarget:gMenuItemTarget];
     [myMenuItem setSubmenu:mySubmenu];
     
     // Add menu
@@ -56,6 +82,10 @@ void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int contex
     
     Class class_TContextMenu = objc_getClass("TContextMenu");
     if (class_TContextMenu != nil) {
+        // Create menu item target
+        gMenuItemTarget = [[MenuItemTarget alloc] init];
+        
+        // Try to override method
         Method original_buildContextMenu = class_getClassMethod(class_TContextMenu, @selector(buildContextMenu:forContext:browserController:maxItems:addServices:));
         if (original_buildContextMenu != nil) {
             mach_error_t err;
