@@ -60,7 +60,11 @@ void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int contex
         if (original_buildContextMenu != nil) {
             mach_error_t err;
             err = mach_override_ptr(method_getImplementation(original_buildContextMenu), override_buildContextMenu, (void**)&gOrigContextMenuProc);
-            NSLog(@"Override result: %d", err);
+            if (err == err_none) {
+                NSLog(@"Override successful!");
+            } else {
+                NSLog(@"Override error: %d", err);
+            }
         } else {
             NSLog(@"Method 'buildContextMenu:forContext:browserController:maxItems:addServices:' not found in 'TContextMenu' class");
         }
