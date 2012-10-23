@@ -19,6 +19,28 @@ BuildContextMenuProc gOrigContextMenuProc;
 void override_buildContextMenu(Class c, SEL s, NSMenu *menu, unsigned int context, id browserController, unsigned long long maxItems, BOOL addServices) {
     NSLog(@"In override method for menu: %@", menu);
     gOrigContextMenuProc(c, s, menu, context, browserController, maxItems, addServices);
+    
+    // Find first separator to insert menu after it
+    NSInteger index;
+    for (index = 1 /* 0 is always separator  */; index < [menu numberOfItems]; ++index) {
+        if ([[menu itemAtIndex:index] isSeparatorItem]) {
+            // separator found!
+            break;
+        }
+    }
+    
+    NSLog(@"Separator found at index: %ld", index);
+    
+    // Build extension menu
+    NSMenuItem *myMenuItem = [[NSMenuItem alloc] initWithTitle:@"My Menu" action:nil keyEquivalent:@""];
+    NSMenu *mySubmenu = [[NSMenu alloc] initWithTitle:@"My menu"];
+    [mySubmenu addItemWithTitle:@"Say Hello" action:nil keyEquivalent:@""];
+    [mySubmenu addItemWithTitle:@"Say Goodbye" action:nil keyEquivalent:@""];
+    [myMenuItem setSubmenu:mySubmenu];
+    
+    // Add menu
+    [menu insertItem:myMenuItem atIndex:index + 1];
+    [menu insertItem:[NSMenuItem separatorItem] atIndex:index + 2];
 }
 
 @implementation FinderExt
