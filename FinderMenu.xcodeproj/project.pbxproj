@@ -85,6 +85,7 @@
 		0279D96C163480450072A5BD /* FinderExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderExt.m; sourceTree = "<group>"; };
 		0291CA421637066A001E5737 /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = mach_override/mach_override.c; sourceTree = SOURCE_ROOT; };
 		0291CA431637066A001E5737 /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = mach_override/mach_override.h; sourceTree = SOURCE_ROOT; };
+		02DCED0C1646D293000B3A7A /* Finder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0291CA4116370657001E5737 /* mach_override */,
+				02DCED0C1646D293000B3A7A /* Finder.h */,
 				0279D96B163480450072A5BD /* FinderExt.h */,
 				0279D96C163480450072A5BD /* FinderExt.m */,
 				0279D96216347E670072A5BD /* Supporting Files */,
