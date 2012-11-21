@@ -16,7 +16,6 @@
 		0279D96D163480450072A5BD /* FinderExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D96C163480450072A5BD /* FinderExt.m */; };
 		0279D9701634882E0072A5BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95E16347E670072A5BD /* AppKit.framework */; };
 		0291CA3C1635FA1C001E5737 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95B16347E670072A5BD /* Cocoa.framework */; };
-		0291CA441637066A001E5737 /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 0291CA421637066A001E5737 /* mach_override.c */; };
 		02DCED131646DB9C000B3A7A /* TFENodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCED121646DB9C000B3A7A /* TFENodeHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +83,6 @@
 		0279D96716347E670072A5BD /* FinderExt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FinderExt-Prefix.pch"; sourceTree = "<group>"; };
 		0279D96B163480450072A5BD /* FinderExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderExt.h; sourceTree = "<group>"; };
 		0279D96C163480450072A5BD /* FinderExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderExt.m; sourceTree = "<group>"; };
-		0291CA421637066A001E5737 /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = mach_override/mach_override.c; sourceTree = SOURCE_ROOT; };
-		0291CA431637066A001E5737 /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = mach_override/mach_override.h; sourceTree = SOURCE_ROOT; };
 		02DCED0C1646D293000B3A7A /* Finder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
 		02DCED111646DB9C000B3A7A /* TFENodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFENodeHelper.h; sourceTree = "<group>"; };
 		02DCED121646DB9C000B3A7A /* TFENodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFENodeHelper.m; sourceTree = "<group>"; };
@@ -182,7 +179,6 @@
 		0279D96116347E670072A5BD /* FinderExt */ = {
 			isa = PBXGroup;
 			children = (
-				0291CA4116370657001E5737 /* mach_override */,
 				02DCED0C1646D293000B3A7A /* Finder.h */,
 				0279D96B163480450072A5BD /* FinderExt.h */,
 				0279D96C163480450072A5BD /* FinderExt.m */,
@@ -201,15 +197,6 @@
 				0279D96716347E670072A5BD /* FinderExt-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0291CA4116370657001E5737 /* mach_override */ = {
-			isa = PBXGroup;
-			children = (
-				0291CA421637066A001E5737 /* mach_override.c */,
-				0291CA431637066A001E5737 /* mach_override.h */,
-			);
-			name = mach_override;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +325,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0279D96D163480450072A5BD /* FinderExt.m in Sources */,
-				0291CA441637066A001E5737 /* mach_override.c in Sources */,
 				02DCED131646DB9C000B3A7A /* TFENodeHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
