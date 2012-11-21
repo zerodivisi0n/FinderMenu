@@ -40,6 +40,12 @@ static TFENodeHelper *gNodeHelper;
     return self;
 }
 
+- (void)dealloc
+{
+    [_files release];
+    [super dealloc];
+}
+
 - (void)sayMessage:(NSString *)title {
     [[NSAlert alertWithMessageText:title
                     defaultButton:nil
