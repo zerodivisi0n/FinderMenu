@@ -77,4 +77,15 @@
     return path;
 }
 
+- (NSArray *)arrayForNodeVector:(const struct TFENodeVector *)vector
+{
+    NSInteger capacity = vector->_end - vector->_begin;
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:capacity];
+    struct TFENode *node;
+    for (node = vector->_begin; node < vector->_end; ++node) {
+        [array addObject: [self pathForNode:node]];
+    }
+    return array;
+}
+
 @end

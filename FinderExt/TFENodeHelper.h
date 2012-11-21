@@ -12,6 +12,7 @@
 
 // Forward declarations
 struct TFENode;
+struct TFENodeVector;
 
 typedef enum {
     TFENodeCtorTypeUnknown,
@@ -33,4 +34,5 @@ typedef enum {
 }
 
 - (NSString *)pathForNode:(const struct TFENode *)node;
+- (NSArray *)arrayForNodeVector:(const struct TFENodeVector *)vector;
 @end
