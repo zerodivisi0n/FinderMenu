@@ -29,13 +29,7 @@ static TFENodeHelper *gNodeHelper;
 - (id)initWithNodes:(const struct TFENodeVector *)vector {
     self = [super init];
     if (self) {
-        NSInteger capacity = vector->_end - vector->_begin;
-        NSMutableArray *files = [[NSMutableArray alloc] initWithCapacity:capacity];
-        struct TFENode *node;
-        for (node = vector->_begin; node < vector->_end; ++node) {
-            [files addObject: [gNodeHelper pathForNode:node]];
-        }
-        _files = files;
+        _files = [[gNodeHelper arrayForNodeVector:vector] retain];
     }
     return self;
 }
