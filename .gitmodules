@@ -1,6 +1,3 @@
 [submodule "mach_inject"]
 	path = mach_inject
 	url = git://github.com/rentzsch/mach_inject.git
-[submodule "mach_override"]
-	path = mach_override
-	url = git://github.com/rentzsch/mach_override.git
