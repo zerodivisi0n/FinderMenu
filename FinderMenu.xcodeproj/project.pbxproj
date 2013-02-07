@@ -246,7 +246,7 @@
 		0279D9231634723E0072A5BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = InfiniteLabs;
 			};
 			buildConfigurationList = 0279D9261634723E0072A5BD /* Build configuration list for PBXProject "FinderMenu" */;
@@ -434,6 +434,7 @@
 		0279D96916347E670072A5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
 				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
@@ -446,6 +447,7 @@
 		0279D96A16347E670072A5BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderExt/FinderExt-Prefix.pch";
 				INFOPLIST_FILE = "FinderExt/FinderExt-Info.plist";
