@@ -1,3 +1,0 @@
-[submodule "mach_inject"]
-	path = mach_inject
-	url = git://github.com/rentzsch/mach_inject.git
