@@ -35,7 +35,7 @@ void* fixedUpImageFromImage (
 		ptrdiff_t fixUpOffset);
 #endif /* __i386__ */
 
-#include <mach/MACH_ERROR.h>
+#include <mach/mach_error.h>
 #define MACH_ERROR(msg, err) { if(err != err_none) mach_error(msg, err); }
 
 /*******************************************************************************
