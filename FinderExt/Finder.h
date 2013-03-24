@@ -12,21 +12,25 @@
 struct OpaqueNodeRef;
 
 struct TFENode {
-    struct OpaqueNodeRef *fNodeRef;
+  struct OpaqueNodeRef *fNodeRef;
 };
 
-struct TFENodeVector {
-    struct TFENode *_begin;
-    struct TFENode *_end;
-    struct TFENode *_end_cap;
-};
+#ifdef __cplusplus
+#include <vector>
+class TFENodeVector  : public std::vector<TFENode>  { };
+#else  // !__cplusplus
+struct TFENodeVector;
+#endif
+  
 
-@interface FINode
-// Old interface:
-+ (FINode *)nodeWithFENode:(const struct TFENode *)node;
+@interface FINode : NSObject
+
+// Lion & Mountain Lion
++ (id)nodeFromNodeRef:(struct OpaqueNodeRef *)nodeRef;
+@property(readonly) NSURL *previewItemURL;
+
+// Snow Leopard
++ (id)nodeWithFENode:(const struct TFENode *)node;
 @property(readonly) NSString *fullPath;
 
-// New interface:
-+ (FINode *)nodeFromNodeRef:(struct OpaqueNodeRef *)nodeRef;
-@property(readonly) NSURL *previewItemURL;
 @end
