@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0273D6CD16FE10C2008DEC2D /* ILFinderMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0273D6CC16FE10C2008DEC2D /* ILFinderMenu.m */; };
+		0273D6D016FE2AD7008DEC2D /* ILClassOverrideUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0273D6CF16FE2AD7008DEC2D /* ILClassOverrideUtils.m */; };
+		0273D6D316FE4DCE008DEC2D /* ILSimpleMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0273D6D216FE4DCE008DEC2D /* ILSimpleMenuDelegate.m */; };
+		0273D6D616FE4E2F008DEC2D /* ILPathMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0273D6D516FE4E2F008DEC2D /* ILPathMenuDelegate.m */; };
+		0273D6D916FF0F7B008DEC2D /* ILTFENodeUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0273D6D816FF0F7B008DEC2D /* ILTFENodeUtils.mm */; };
 		0279D9311634723E0072A5BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D9301634723E0072A5BD /* Foundation.framework */; };
 		0279D9341634723E0072A5BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D9331634723E0072A5BD /* main.m */; };
 		0279D9381634723E0072A5BD /* FinderMenu.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0279D9371634723E0072A5BD /* FinderMenu.1 */; };
@@ -16,7 +21,6 @@
 		0279D96D163480450072A5BD /* FinderExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0279D96C163480450072A5BD /* FinderExt.m */; };
 		0279D9701634882E0072A5BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95E16347E670072A5BD /* AppKit.framework */; };
 		0291CA3C1635FA1C001E5737 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279D95B16347E670072A5BD /* Cocoa.framework */; };
-		02DCED131646DB9C000B3A7A /* TFENodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DCED121646DB9C000B3A7A /* TFENodeHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0273D6CB16FE10C2008DEC2D /* ILFinderMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILFinderMenu.h; sourceTree = "<group>"; };
+		0273D6CC16FE10C2008DEC2D /* ILFinderMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFinderMenu.m; sourceTree = "<group>"; };
+		0273D6CE16FE2AD7008DEC2D /* ILClassOverrideUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILClassOverrideUtils.h; sourceTree = "<group>"; };
+		0273D6CF16FE2AD7008DEC2D /* ILClassOverrideUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILClassOverrideUtils.m; sourceTree = "<group>"; };
+		0273D6D116FE4DCE008DEC2D /* ILSimpleMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILSimpleMenuDelegate.h; sourceTree = "<group>"; };
+		0273D6D216FE4DCE008DEC2D /* ILSimpleMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILSimpleMenuDelegate.m; sourceTree = "<group>"; };
+		0273D6D416FE4E2F008DEC2D /* ILPathMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPathMenuDelegate.h; sourceTree = "<group>"; };
+		0273D6D516FE4E2F008DEC2D /* ILPathMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPathMenuDelegate.m; sourceTree = "<group>"; };
+		0273D6D716FF0F7B008DEC2D /* ILTFENodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTFENodeUtils.h; sourceTree = "<group>"; };
+		0273D6D816FF0F7B008DEC2D /* ILTFENodeUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ILTFENodeUtils.mm; sourceTree = "<group>"; };
 		0279D92C1634723E0072A5BD /* FinderMenu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FinderMenu; sourceTree = BUILT_PRODUCTS_DIR; };
 		0279D9301634723E0072A5BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0279D9331634723E0072A5BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,8 +98,6 @@
 		0279D96B163480450072A5BD /* FinderExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderExt.h; sourceTree = "<group>"; };
 		0279D96C163480450072A5BD /* FinderExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderExt.m; sourceTree = "<group>"; };
 		02DCED0C1646D293000B3A7A /* Finder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Finder.h; sourceTree = "<group>"; };
-		02DCED111646DB9C000B3A7A /* TFENodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFENodeHelper.h; sourceTree = "<group>"; };
-		02DCED121646DB9C000B3A7A /* TFENodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFENodeHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,10 +192,18 @@
 			isa = PBXGroup;
 			children = (
 				02DCED0C1646D293000B3A7A /* Finder.h */,
+				0273D6CE16FE2AD7008DEC2D /* ILClassOverrideUtils.h */,
+				0273D6CF16FE2AD7008DEC2D /* ILClassOverrideUtils.m */,
+				0273D6D716FF0F7B008DEC2D /* ILTFENodeUtils.h */,
+				0273D6D816FF0F7B008DEC2D /* ILTFENodeUtils.mm */,
 				0279D96B163480450072A5BD /* FinderExt.h */,
 				0279D96C163480450072A5BD /* FinderExt.m */,
-				02DCED111646DB9C000B3A7A /* TFENodeHelper.h */,
-				02DCED121646DB9C000B3A7A /* TFENodeHelper.m */,
+				0273D6CB16FE10C2008DEC2D /* ILFinderMenu.h */,
+				0273D6CC16FE10C2008DEC2D /* ILFinderMenu.m */,
+				0273D6D116FE4DCE008DEC2D /* ILSimpleMenuDelegate.h */,
+				0273D6D216FE4DCE008DEC2D /* ILSimpleMenuDelegate.m */,
+				0273D6D416FE4E2F008DEC2D /* ILPathMenuDelegate.h */,
+				0273D6D516FE4E2F008DEC2D /* ILPathMenuDelegate.m */,
 				0279D96216347E670072A5BD /* Supporting Files */,
 			);
 			path = FinderExt;
@@ -325,7 +345,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0279D96D163480450072A5BD /* FinderExt.m in Sources */,
-				02DCED131646DB9C000B3A7A /* TFENodeHelper.m in Sources */,
+				0273D6CD16FE10C2008DEC2D /* ILFinderMenu.m in Sources */,
+				0273D6D016FE2AD7008DEC2D /* ILClassOverrideUtils.m in Sources */,
+				0273D6D316FE4DCE008DEC2D /* ILSimpleMenuDelegate.m in Sources */,
+				0273D6D616FE4E2F008DEC2D /* ILPathMenuDelegate.m in Sources */,
+				0273D6D916FF0F7B008DEC2D /* ILTFENodeUtils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +404,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -408,10 +431,6 @@
 		0279D93C1634723E0072A5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/FinderMenu-gnxhprxagzyxouaxzogedlgqbqck/Build/Products/Default\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderMenu/FinderMenu-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -421,10 +440,6 @@
 		0279D93D1634723E0072A5BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/FinderMenu-gnxhprxagzyxouaxzogedlgqbqck/Build/Products/Default\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderMenu/FinderMenu-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
