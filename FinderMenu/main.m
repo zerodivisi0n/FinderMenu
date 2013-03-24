@@ -9,7 +9,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-#import "mach_inject_bundle/mach_inject_bundle.h"
+#import "../mach_inject/mach_inject_bundle/mach_inject_bundle.h"
 
 int main(int argc, const char * argv[])
 {
