@@ -8,147 +8,81 @@
 
 #import "FinderExt.h"
 
-#import <objc/runtime.h>
-
-#import "Finder.h"
-#import "TFENodeHelper.h"
-
-static TFENodeHelper *gNodeHelper;
-
-// Auxiliary class to execute menu actions
-@interface MenuItemTarget : NSObject {
-    @private
-    NSArray *_files;
-}
-- (id)initWithNodes:(const struct TFENodeVector *)vector;
-- (void)sayHello:(id)sender;
-- (void)sayGoodbye:(id)sender;
-@end
-
-@implementation MenuItemTarget
-- (id)initWithNodes:(const struct TFENodeVector *)vector {
-    self = [super init];
-    if (self) {
-        _files = [[gNodeHelper arrayForNodeVector:vector] retain];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [_files release];
-    [super dealloc];
-}
-
-- (void)sayMessage:(NSString *)title {
-    [[NSAlert alertWithMessageText:title
-                    defaultButton:nil
-                  alternateButton:nil
-                      otherButton:nil
-        informativeTextWithFormat:@"Files: %@", _files] runModal];
-    
-    [self release];
-}
-
-- (void)sayHello:(id)sender { [self sayMessage:@"Hello"]; }
-- (void)sayGoodbye:(id)sender { [self sayMessage:@"Goodbye"]; }
-@end
-
-/**
- * Renames the selector for a given method.
- * Searches for a method with origSEL and reassigned overrideSEL to that
- * implementation.
- * http://www.mikeash.com/pyblog/friday-qa-2010-01-29-method-replacement-for-fun-and-profit.html
- */
-static void MethodSwizzle(Class c, SEL origSEL, SEL overrideSEL)
-{
-    Method origMethod = class_getInstanceMethod(c, origSEL);
-    Method overrideMethod = class_getInstanceMethod(c, overrideSEL);
-    
-    NSLog(@"orig=%p, override=%p", origMethod, overrideMethod);
-    
-    if(class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
-        class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-    } else {
-        method_exchangeImplementations(origMethod, overrideMethod);
-    }
-}
-
-static void OverrideClass(const char *name, SEL origSEL, Method overrideMethod) {
-    Class c = objc_getClass(name);
-    if (c != nil) {
-        // add override method to target class
-        class_addMethod(c,
-                        method_getName(overrideMethod),
-                        method_getImplementation(overrideMethod),
-                        method_getTypeEncoding(overrideMethod));
-        // swizzle methods
-        MethodSwizzle(c, origSEL, method_getName(overrideMethod));
-        NSLog(@"Method 'menuForEvent:' overriden in class %s", name);
-    } else {
-        NSLog(@"Class %s not found to override", name);
-    }
-}
+#import "ILFinderMenu.h"
+#import "ILPathMenuDelegate.h"
 
 @implementation FinderExt
 
+static FinderExt *_instance = nil;
+
 + (void)load {
-    // Setup logging
-    // Write log file to ~/FinderExt.log
-    const char* logFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"FinderExt.log"] UTF8String];
-    freopen(logFilePath, "a", stdout);
-    freopen(logFilePath, "a", stderr);
-    
-    NSLog(@"Main bundle: %@", [[NSBundle mainBundle] bundleIdentifier]);
-    
-    // Create helper object
-    gNodeHelper = [[TFENodeHelper alloc] init];
-    if (gNodeHelper == nil) {
-        NSLog(@"Failed to instantiate 'TFENodeHelper' class");
-        return;
-    }
-    
-    Method method = class_getInstanceMethod(self, @selector(override_configureWithNodes:browserController:container:));
-    OverrideClass("TContextMenu", @selector(configureWithNodes:browserController:container:), method);
-    
-    NSLog(@"FinderExt load is complete");
+  
+  NSLog(@"Main bundle: %@", [[NSBundle mainBundle] bundleIdentifier]);
+  if (!_instance) {
+    _instance = [[FinderExt alloc] init];
+  }
+  NSLog(@"FinderExt load is complete");
 }
 
-- (void)override_configureWithNodes:(const struct TFENodeVector *)vector
-                  browserController:(id)browserController
-                          container:(BOOL)container {
-    [self override_configureWithNodes:vector browserController:browserController container:container];
+- (id)init
+{
+  self = [super init];
+  if (self) {
+    [self setupLogging];
     
-    NSMenu *contextMenu = (NSMenu *)self;
-    
-    // Find first separator to insert menu after it
-    NSInteger index;
-    for (index = 1 /* 0 is always separator  */; index < [contextMenu numberOfItems]; ++index) {
-        if ([[contextMenu itemAtIndex:index] isSeparatorItem]) {
-            // separator found!
-            break;
-        }
-    }
-    
-    MenuItemTarget *myMenuTarget = [[MenuItemTarget alloc] initWithNodes:vector];
-    
-    // Build extension menu
-    NSMenuItem *myMenuItem = [[NSMenuItem alloc] initWithTitle:@"My Menu" action:nil keyEquivalent:@""];
-    NSMenu *mySubmenu = [[NSMenu alloc] initWithTitle:@"My menu"];
-    [mySubmenu setAutoenablesItems:NO];
-    [[mySubmenu addItemWithTitle:@"Say Hello"
-                          action:@selector(sayHello:)
-                   keyEquivalent:@""]
-     setTarget:myMenuTarget];
-    [[mySubmenu addItemWithTitle:@"Say Goodbye"
-                          action:@selector(sayGoodbye:)
-                   keyEquivalent:@""]
-     setTarget:myMenuTarget];
-    [myMenuItem setSubmenu:mySubmenu];
-    
-    // Add menu
-    [contextMenu insertItem:myMenuItem atIndex:index + 1];
-    [contextMenu insertItem:[NSMenuItem separatorItem] atIndex:index + 2];
+    NSMenuItem *menuItem = [self createMenuItem];
+    [self injectMenuItem:menuItem];
+  }
+  return self;
+}
+
+- (void)setupLogging
+{
+  // Write log file to ~/FinderExt.log
+  const char* logFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"FinderExt.log"] UTF8String];
+  freopen(logFilePath, "a", stdout);
+  freopen(logFilePath, "a", stderr);
+}
+
+- (NSMenuItem *)createMenuItem
+{
+  NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Test menu"
+                                                    action:nil
+                                             keyEquivalent:@""];
+  NSMenu *submenu = [[NSMenu alloc] initWithTitle:@"My menu"];
+  [submenu setAutoenablesItems:NO];
+  [[submenu addItemWithTitle:@"Item 1"
+                       action:@selector(itemClicked:)
+                keyEquivalent:@""]
+   setTarget:self];
+  [[submenu addItemWithTitle:@"Item 2"
+                       action:@selector(itemClicked:)
+                keyEquivalent:@""]
+   setTarget:self];
+  [menuItem setSubmenu:submenu];
+  return menuItem;
+}
+
+- (void)injectMenuItem:(NSMenuItem *)menuItem
+{
+  // Create menu only in User's home directory
+  ILSimpleMenuDelegate *simpleDelegate = [[[ILPathMenuDelegate alloc]
+                                           initWithPath:NSHomeDirectory()
+                                           menuItem:menuItem
+                                           index:4]
+                                          autorelease];
+  [[ILFinderMenu sharedInstance] setDelegate:simpleDelegate];
+}
+
+- (void)itemClicked:(id)sender
+{
+  NSMenuItem *item = (NSMenuItem *)sender;
+  [[NSAlert alertWithMessageText:[NSString stringWithFormat:@"%@ clicked", [item title]]
+                   defaultButton:nil
+                 alternateButton:nil
+                     otherButton:nil
+       informativeTextWithFormat:@"Selected files: %@", [[ILFinderMenu sharedInstance] selectedItems]]
+   runModal];
 }
 
 @end
