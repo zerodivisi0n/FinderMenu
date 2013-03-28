@@ -433,6 +433,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderMenu/FinderMenu-Prefix.pch";
+				HEADER_SEARCH_PATHS = "mach_inject/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -442,6 +443,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FinderMenu/FinderMenu-Prefix.pch";
+				HEADER_SEARCH_PATHS = "mach_inject/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
