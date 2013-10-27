@@ -67,6 +67,10 @@ static ILFinderMenu *_sharedInstance = nil;
                              @selector(configureWithNodes:browserController:container:),
                              [self class],
                              @selector(override_TContextMenu_configureWithNodes:browserController:container:));
+      overrideClassMethod(menuClass,
+                          @selector(addViewSpecificStuffToMenu:browserViewController:context:),
+                          [self class],
+                          @selector(override_TContextMenu_addViewSpecificStuffToMenu:browserViewController:context:));
     } else {
       // Snow Leopard & Lion
       overrideClassMethod(menuClass,
@@ -77,11 +81,11 @@ static ILFinderMenu *_sharedInstance = nil;
                              @selector(configureWithNodes:windowController:container:),
                              [self class],
                              @selector(override_TContextMenu_configureWithNodes:windowController:container:));
+      overrideClassMethod(menuClass,
+                          @selector(addViewSpecificStuffToMenu:browserViewController:context:),
+                          [self class],
+                          @selector(override_TContextMenu_addViewSpecificStuffToMenu:browserViewController:context:));
     }
-    overrideClassMethod(menuClass,
-                        @selector(addViewSpecificStuffToMenu:browserViewController:context:),
-                        [self class],
-                        @selector(override_TContextMenu_addViewSpecificStuffToMenu:browserViewController:context:));
   }
   return self;
 }
