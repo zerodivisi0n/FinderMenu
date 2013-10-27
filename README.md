@@ -14,7 +14,7 @@ The application consists of the following components:
 * *FinderExt.bundle* - injectee bundle, that overrides code inside Finder process
 * *mach_inject_bundle.framework* (and *mach_inject_bundle_stub.bundle* which is part of this framework) - mach inject bundle framework, which used by *FinderMenu*
 
-Application has only been tested on the latest version of Mac OS X 10.8.2. I will be grateful if you test it in earlier versions. Theoretically it should work on OS X versions >= 10.6 (in 10.6 Finder has been rewritten from Carbon to Cocoa and this hack is Cocoa-specific).
+Application has been tested on OS X versions 10.8 and 10.9. I will be grateful if you test it in earlier versions. Theoretically it should work on OS X versions >= 10.6 (in 10.6 Finder has been rewritten from Carbon to Cocoa and this hack is Cocoa-specific).
 
 ## Building & running
 
