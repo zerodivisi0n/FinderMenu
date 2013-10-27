@@ -57,8 +57,22 @@ static ILFinderMenu *_sharedInstance = nil;
       return nil;
     }
     
-    if (versionMajor >= 8) {
-      // Mountain Lion and greater
+    if (versionMajor >= 9) {
+      // Mavericks and greater
+      overrideClassMethod(menuClass,
+                          @selector(handleContextMenuCommon:nodes:event:clickedView:browserViewController:addPlugIns:),
+                          [self class],
+                          @selector(override_TContextMenu_handleContextMenuCommon:nodes:event:clickedView:browserViewController:addPlugIns:));
+      overrideInstanceMethod(menuClass,
+                             @selector(configureFromMenuNeedsUpdate:clickedView:container:event:selectedNodes:),
+                             [self class],
+                             @selector(override_TContextMenu_configureFromMenuNeedsUpdate:clickedView:container:event:selectedNodes:));
+      overrideClassMethod(menuClass,
+                          @selector(addViewSpecificStuffToMenu:clickedView:browserViewController:context:),
+                          [self class],
+                          @selector(override_TContextMenu_addViewSpecificStuffToMenu:clickedView:browserViewController:context:));
+    } else if (versionMajor == 8) {
+      // Mountain Lion
       overrideClassMethod(menuClass,
                           @selector(handleContextMenuCommon:nodes:event:view:browserController:addPlugIns:),
                           [self class],
@@ -135,6 +149,23 @@ static ILFinderMenu *_sharedInstance = nil;
                                            addPlugIns:flag];
 }
 
+// Mavericks
++ (void)override_TContextMenu_handleContextMenuCommon:(unsigned int)context
+                                                nodes:(const struct TFENodeVector *)nodes
+                                                event:(id)event
+                                          clickedView:(id)view
+                                browserViewController:(id)browserViewController
+                                           addPlugIns:(BOOL)flag
+{
+  [ILFinderMenu setSelectedItemsFromNodes:nodes];
+  [self override_TContextMenu_handleContextMenuCommon:context
+                                                nodes:nodes
+                                                event:event
+                                          clickedView:view
+                                    browserViewController:browserViewController
+                                           addPlugIns:flag];
+}
+
 // Snow Leopard, Lion & Mountain Lion
 + (void)override_TContextMenu_addViewSpecificStuffToMenu:(id)menu
                                    browserViewController:(id)browserViewController
@@ -144,6 +175,23 @@ static ILFinderMenu *_sharedInstance = nil;
                                    browserViewController:browserViewController
                                                  context:context];
   
+  // Update menu only for Desktop and Icon views
+  if ([browserViewController isKindOfClass:NSClassFromString(@"TIconViewController")]
+      || [browserViewController isKindOfClass:NSClassFromString(@"TDesktopViewController")]) {
+    [ILFinderMenu finderWillShowContextMenu:menu];
+  }
+}
+
+// Mavericks
++ (void)override_TContextMenu_addViewSpecificStuffToMenu:(id)menu
+                                             clickedView:(id)view
+                                   browserViewController:(id)browserViewController
+                                                 context:(unsigned int)context
+{
+  [self override_TContextMenu_addViewSpecificStuffToMenu:menu
+                                             clickedView:view
+                                   browserViewController:browserViewController
+                                                 context:context];
   // Update menu only for Desktop and Icon views
   if ([browserViewController isKindOfClass:NSClassFromString(@"TIconViewController")]
       || [browserViewController isKindOfClass:NSClassFromString(@"TDesktopViewController")]) {
@@ -174,6 +222,22 @@ static ILFinderMenu *_sharedInstance = nil;
                                browserController:browserController
                                        container:container];
   
+  [ILFinderMenu setSelectedItemsFromNodes:nodes];
+  [ILFinderMenu finderWillShowContextMenu:self];
+}
+
+// Mavericks
+- (void)override_TContextMenu_configureFromMenuNeedsUpdate:(id)controller
+                                               clickedView:(id)view
+                                                 container:(BOOL)container
+                                                     event:(id)event
+                                             selectedNodes:(const struct TFENodeVector *)nodes
+{
+  [self override_TContextMenu_configureFromMenuNeedsUpdate:controller
+                                               clickedView:view
+                                                 container:container
+                                                     event:event
+                                             selectedNodes:nodes];
   [ILFinderMenu setSelectedItemsFromNodes:nodes];
   [ILFinderMenu finderWillShowContextMenu:self];
 }
